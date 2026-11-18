@@ -97,7 +97,7 @@ export default function ManagePage() {
 
           <div className="flex gap-4">
             <Link href="/admin/dashboard" legacyBehavior>
-              <NeonButton variant="ghost" size="sm">
+              <NeonButton variant="default" size="sm">
                 Dashboard
               </NeonButton>
             </Link>
@@ -182,12 +182,12 @@ export default function ManagePage() {
                 </div>
                 <div className="flex justify-end gap-2">
                   <Link href={`/docs/${doc.id}`} legacyBehavior>
-                    <NeonButton variant="ghost" size="sm">
+                    <NeonButton variant="default" size="sm">
                       <Download className="w-4 h-4" />
                     </NeonButton>
                   </Link>
                   <Link href={`/admin/manage/${doc.id}/edit`} legacyBehavior>
-                    <NeonButton variant="ghost" size="sm">
+                    <NeonButton variant="default" size="sm">
                       <Edit2 className="w-4 h-4" />
                     </NeonButton>
                   </Link>
