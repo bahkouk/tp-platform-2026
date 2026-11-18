@@ -1,0 +1,6 @@
+$env:CLAUDE_CONFIG_DIR = "$HOME\.claude-omniroute"
+$env:ANTHROPIC_BASE_URL = "http://localhost:20128"
+$env:ANTHROPIC_AUTH_TOKEN = "sk-b694d403e61de993-312383-3e0d525f"
+$env:ANTHROPIC_API_KEY = ""
+$env:ANTHROPIC_MODEL = "fast-aitfo"
+& ".\node_modules\.bin\claude.cmd"

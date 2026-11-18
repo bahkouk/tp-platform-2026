@@ -1,0 +1,284 @@
+.lamp-wrapper {
+  --bg: #0a0a0a;
+  --card: rgba(40, 37, 33, 0.78);
+  --field: #161513;
+  --text: #f4efe4;
+  --muted: #9a958b;
+  --yellow: #ffd60a;
+  --line: rgba(255, 255, 255, 0.12);
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 30% 40%, #17150c 0, var(--bg) 60%);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  overflow-x: hidden;
+  transition: background 0.5s;
+}
+
+.lamp-wrapper.off {
+  background: #050505;
+}
+
+.lamp-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  padding: 24px;
+  flex-wrap: wrap;
+}
+
+#fireflies {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ff {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--yellow);
+  box-shadow: 0 0 8px var(--yellow);
+  animation: float linear infinite;
+  transition: opacity 0.6s;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(18px, -26px); }
+  100% { transform: translate(0, 0); }
+}
+
+.off .ff { opacity: 0.08; }
+
+.lamp {
+  position: relative;
+  width: 380px;
+  height: 600px;
+  flex: none;
+}
+
+.lamp svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cone, .glow, .slit { transition: opacity 0.5s; }
+.off .cone, .off .glow { opacity: 0; }
+.off .slit { fill: #3a382e; }
+
+#cord {
+  cursor: pointer;
+  touch-action: none;
+  transition: transform 0.15s;
+}
+
+.sway {
+  transform-origin: 252px 90px;
+  animation: sway 5s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-1.4deg); }
+  50% { transform: rotate(1.4deg); }
+}
+
+#cord.pull { animation: pull 0.45s ease-out; }
+@keyframes pull {
+  0% { transform: translateY(0); }
+  35% { transform: translateY(26px); }
+  100% { transform: translateY(0); }
+}
+
+.mote { animation: drift 7s ease-in-out infinite; }
+.m2 { animation-duration: 9s; animation-delay: -3s; }
+.m3 { animation-duration: 11s; animation-delay: -6s; }
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0); opacity: 0.2; }
+  50% { transform: translate(10px, -22px); opacity: 1; }
+}
+
+.flick .cone, .flick .glow { animation: flick 0.8s; }
+@keyframes flick {
+  0% { opacity: 0; }
+  10% { opacity: 0.9; }
+  22% { opacity: 0.1; }
+  38% { opacity: 1; }
+  52% { opacity: 0.35; }
+  70% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.lamp-card {
+  position: relative;
+  width: 420px;
+  max-width: 100%;
+  padding: 40px 36px;
+  border-radius: 28px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  transition: filter 0.5s;
+}
+
+.off .lamp-card {
+  filter: brightness(0.45);
+  pointer-events: none;
+  user-select: none;
+}
+
+.lamp-card h1 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.lamp-sub {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  margin: 10px 0 22px;
+}
+
+.lamp-field {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.lamp-field input {
+  width: 100%;
+  height: 48px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--field);
+  color: var(--text);
+  padding: 0 44px;
+  font: inherit;
+  font-size: 14px;
+  outline: 2px solid transparent;
+  transition: outline-color 0.2s;
+}
+
+.lamp-field input::placeholder { color: var(--muted); }
+.lamp-field input:focus { outline-color: var(--yellow); }
+
+.lamp-field .ic {
+  position: absolute;
+  left: 16px;
+  top: 15px;
+  width: 18px;
+  height: 18px;
+  stroke: var(--muted);
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lamp-eye {
+  position: absolute;
+  right: 12px;
+  top: 11px;
+  width: 26px;
+  height: 26px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.lamp-eye svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--muted);
+  fill: none;
+  stroke-width: 1.6;
+}
+.lamp-eye:hover svg { stroke: var(--yellow); }
+
+.lamp-signin {
+  display: block;
+  width: 100%;
+  height: 50px;
+  margin-top: 32px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--yellow);
+  color: #1a1500;
+  font: inherit;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(255, 214, 10, 0.3);
+  transition: transform 0.15s;
+}
+
+.lamp-signin:hover { transform: translateY(-1px); }
+
+.lamp-or {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 22px 0 16px;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 1.4px;
+}
+
+.lamp-or::before, .lamp-or::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.lamp-social {
+  display: flex;
+  gap: 12px;
+}
+
+.lamp-social button {
+  flex: 1;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.lamp-social button:hover { background: rgba(255, 255, 255, 0.1); }
+.lamp-social svg { width: 18px; height: 18px; }
+
+.lamp-hint {
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+@keyframes shake {
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+.shake { animation: shake 0.4s; }
+
+@media (max-width: 900px) {
+  .lamp-page { gap: 10px; }
+  .lamp { height: 420px; width: 300px; }
+}
