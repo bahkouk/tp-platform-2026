@@ -148,7 +148,7 @@ export default function AdminDashboard() {
                 </div>
                 <div className="flex gap-2">
                   <Link href={`/docs/${doc.id}`} legacyBehavior>
-                    <NeonButton variant="ghost" size="sm">
+                    <NeonButton variant="default" size="sm">
                       View
                     </NeonButton>
                   </Link>
