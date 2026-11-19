@@ -12,6 +12,11 @@ const inter = Inter({
   display: 'swap',
 });
 
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
+
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'TP Platform - 2030 Futuristic Document Hub',
   description: 'Upload, browse, and download TP (Tugas Pendek) documents in a sleek 2030 neon aesthetic',

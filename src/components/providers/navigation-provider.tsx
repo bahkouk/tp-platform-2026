@@ -25,7 +25,7 @@ export function NavigationProvider({ children }: { children: React.ReactNode }) 
       <NavigationContext.Provider
         value={{
           pathname,
-          searchParams: new URLSearchParams(searchParams.toString()),
+          searchParams: new URLSearchParams(searchParams?.toString() || ''),
           push: router.push.bind(router),
           replace: router.replace.bind(router),
           back: router.back.bind(router),
